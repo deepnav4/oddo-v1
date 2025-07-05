@@ -32,7 +32,7 @@ export function Notifications() {
               </svg>
             </button>
             
-            <h1 className="text-xl lg:text-2xl">Clients</h1>
+            <h1 className="text-xl lg:text-2xl">Notifications</h1>
             <div className="flex items-center space-x-2 bg-white rounded-full px-3 py-1.5 border">
               <img
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
