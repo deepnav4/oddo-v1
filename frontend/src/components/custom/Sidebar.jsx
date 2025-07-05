@@ -59,10 +59,10 @@ export const Sidebar = ({ isOpen, onClose, activeComponent }) => {
               <button
                 key={index}
                 onClick={item.onClick}
-                className={`w-full text-left px-6 py-2.5 text-sm ${
+                className={`w-full text-left px-6 py-2.5 text-sm transition-colors duration-200 ${
                   item.active 
-                    ? 'text-[#1F77B4F2] bg-blue-50' 
-                    : 'text-gray-600 hover:bg-gray-50'
+                    ? 'text-[#1F77B4F2] bg-blue-50 border-r-2 border-[#1F77B4F2] font-medium' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
                 }`}
               >
                 {item.label}

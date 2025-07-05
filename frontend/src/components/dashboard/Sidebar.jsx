@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
 import { HomeIcon, ChartIcon, SettingsIcon } from './icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const menuItems = [
   { icon: HomeIcon, label: 'Dashboard', href: '/dashboard' },
@@ -11,6 +11,8 @@ const menuItems = [
 ];
 
 export function Sidebar({ isOpen }) {
+  const location = useLocation();
+
   return (
     <div
       className={cn(
@@ -22,16 +24,24 @@ export function Sidebar({ isOpen }) {
         <h2 className="text-lg font-semibold">Dashboard</h2>
       </div>
       <nav className="space-y-1 p-4">
-        {menuItems.map((item) => (
-          <Link
-            key={item.href}
-            to={item.href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-colors hover:text-gray-900 hover:bg-gray-100"
-          >
-            <item.icon className="h-5 w-5" />
-            <span>{item.label}</span>
-          </Link>
-        ))}
+        {menuItems.map((item) => {
+          const isActive = location.pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2 transition-colors",
+                isActive 
+                  ? "text-primary bg-primary/10 hover:bg-primary/20" 
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+              )}
+            >
+              <item.icon className={cn("h-5 w-5", isActive && "text-primary")} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
     </div>
   );
